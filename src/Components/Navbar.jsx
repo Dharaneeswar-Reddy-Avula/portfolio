@@ -22,8 +22,8 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className={`side-nav md:hidden text-white w-full bg-[#ccc] ${display} animate-slideIn fixed top-0 left-0 w-full z-50`}>
-        <ul className="nav-links text-[20px] gap-[30px] bg-black text-white fixed  w-[250px] left-0 top-0 p-[20px]">
+      <div className={`side-nav min-h-screen md:hidden text-white w-full bg-[#ccc] ${display} animate-slideIn fixed top-0 left-0 w-full z-50`}>
+        <ul className="nav-links text-[20px] gap-[30px] bg-black text-white fixed h-full w-[250px] left-0 top-0 p-[20px]">
           <RxCross1 className="text-white float-right cursor-pointer" onClick={HandleClose} />
           <li>
             <Link to="/">Home</Link>
