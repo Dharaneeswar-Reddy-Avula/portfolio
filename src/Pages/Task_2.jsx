@@ -6,16 +6,16 @@ export const Task_2 = () => {
     const [values,setValues] = useState([]);
     const [loading,setLoading] = useState(false);  
     const [selectedBookmaker, setSelectedBookmaker] = useState(null); 
-    const [selectedMarket, setSelectedMarket] = useState(null); 
-     const [selectedOutcome, setSelectedOutcome] = useState(null);
+    const [selectedMarket, setSelectedMarket] = useState(null);
+    const [selectedOutcome, setSelectedOutcome] = useState(null);
     const handleBookmakerChange = (event) => {
         setSelectedBookmaker(event.target.value);
-        setSelectedMarket(null); // Reset market selection when bookmaker changes
-        setSelectedOutcome(null); // Reset outcome selection when market changes
-      };
-       const handleMarketChange = (event) => {
+        setSelectedMarket(null);
+        setSelectedOutcome(null);
+    };
+        const handleMarketChange = (event) => {
         setSelectedMarket(event.target.value);
-        setSelectedOutcome(null); // Reset outcome selection when market changes
+        setSelectedOutcome(null);
       };
       const handleOutcomeChange = (event) => {
         setSelectedOutcome(event.target.value);
@@ -89,7 +89,6 @@ export const Task_2 = () => {
         </select>
       )}
 
-      {/* Outcome Dropdown */}
       {selectedMarket && (
         <select onChange={handleOutcomeChange} value={selectedOutcome || ''} className='mt-[10px] outline-none border-[1px] rounded-md p-[5px]'>
           <option value="">Select Outcome</option>
@@ -104,7 +103,6 @@ export const Task_2 = () => {
         </select>
       )}
 
-      {/* Display selected outcome */}
       {selectedOutcome && <p>Selected Outcome: {selectedOutcome}</p>}
         
   
@@ -118,4 +116,4 @@ export const Task_2 = () => {
         </div>
         </div>
     )
-}
+    }
