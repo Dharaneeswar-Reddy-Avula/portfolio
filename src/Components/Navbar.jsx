@@ -1,12 +1,33 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { RxCross1 } from "react-icons/rx";
-
+import { useLocation } from 'react-router-dom';
 export const Navbar = () => {
   const [display, setDisplay] = useState("hidden");
-  const [clicked, setActiveLink] = useState('home');
+  const [clicked, setActiveLink] = useState('');
+  const location = useLocation();
 
+  useEffect(()=>
+    {   
+      if(location.pathname == '/'){
+        setActiveLink('home');
+      }
+        if(location.pathname == '/about'){
+             setActiveLink('about');
+        }
+        if(location.pathname == '/projects'){
+          setActiveLink('projects');
+     }
+
+     if(location.pathname == '/contact'){
+      setActiveLink('contact');
+ }
+ if(location.pathname == '/apicards'){
+  setActiveLink('API_CARDS ');
+}
+    }
+,[location]);
   
   const HandleSidenav = () => {
     setDisplay((prevDisplay) => (prevDisplay === "hidden" ? "flex" : "hidden"));
@@ -15,10 +36,8 @@ export const Navbar = () => {
   const HandleClose = () => {
     setDisplay("hidden");
   };
-
-  const HandleLinkClick = (link) => {
-    setActiveLink(link)
-  }
+ 
+ 
 
   return (
     <>
@@ -56,7 +75,7 @@ export const Navbar = () => {
         className={`rounded-lg px-[10px] py-[5px] ${
           clicked === "home" ? "bg-[#b6fc03]" : "bg-transparent"
         }`}
-        onClick={() => HandleLinkClick("home")}
+       
       >
         <Link to="/" className="no-underline visited:no-underline">Home</Link>
       </li>
@@ -64,7 +83,7 @@ export const Navbar = () => {
         className={`rounded-lg px-[10px] py-[5px] ${
           clicked === "about" ? "bg-[#b6fc03]" : "bg-transparent"
         }`}
-        onClick={() => HandleLinkClick("about")}
+       
       >
         <Link to="/about" className="no-underline visited:no-underline">About</Link>
       </li>
@@ -72,7 +91,7 @@ export const Navbar = () => {
         className={`rounded-lg px-[10px] py-[5px] ${
           clicked === "projects" ? "bg-[#b6fc03]" : "bg-transparent"
         }`}
-        onClick={() => HandleLinkClick("projects")}
+       
       >
         <Link to="/projects" className="no-underline visited:no-underline">Projects</Link>
       </li>
@@ -80,7 +99,7 @@ export const Navbar = () => {
         className={`rounded-lg px-[10px] py-[5px] ${
           clicked === "contact" ? "bg-[#b6fc03]" : "bg-transparent"
         }`}
-        onClick={() => HandleLinkClick("contact")}
+     
       >
         <Link to="/contact" className="no-underline visited:no-underline">Contact</Link>
       </li>
@@ -88,7 +107,7 @@ export const Navbar = () => {
         className={`rounded-lg px-[10px] py-[5px] ${
           clicked === "API_CARDS" ? "bg-[#b6fc03]" : "bg-transparent"
         }`}
-        onClick={() => HandleLinkClick("apicards")}
+      
       >
         <Link to="/apicards" className="no-underline visited:no-underline">API CARDS</Link>
       </li>

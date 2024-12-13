@@ -1,8 +1,27 @@
-import React from 'react'
+import React ,{ useState }  from 'react'
 import { Navbar } from '../Components/Navbar'
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-export const Contact = () => {
+
+export const Contact = ({ onFormSubmit }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onFormSubmit(formData); // Pass data to parent
+    alert('Form submitted successfully!');
+  };
   return (
     <div  className='contact  w-full h-screen md:p-[20px] p-[10px]'>
        <Navbar/>
@@ -16,16 +35,21 @@ export const Contact = () => {
     <p><strong className='text-[20px]'>Address:</strong>E.Ramapuram,Kalasapadu,<br />Kadapa,AP</p>
   </div>
   
-  <form className="contact-form flex flex-col w-full md:w-[500px] shadow-lg border-1 p-[10px]">
+  <form className="contact-form flex flex-col w-full md:w-[500px] shadow-lg border-1 p-[10px]" onSubmit={handleSubmit}>
     <label className='text-[16px] font-semibold'>Name:</label>
-    <input type="text" placeholder="Your Name" required  className='outline-none border-[1px] p-[10px] rounded-lg'
+    <input type="text" placeholder="Your Name"   value={formData.name} name="name"
+          onChange={handleChange}  required  className='outline-none border-[1px] p-[10px] rounded-lg'
     />
     
     <label className='text-[16px] font-semibold'>Email:</label>
-    <input type="email" placeholder="Your Email" required className='outline-none border-[1px] p-[10px] rounded-lg'/>
+    <input type="email" placeholder="Your Email" required  name="email"
+          value={formData.email}
+          onChange={handleChange} className='outline-none border-[1px] p-[10px] rounded-lg'/>
     
     <label className='text-[16px] font-semibold'>Message:</label>
-    <textarea placeholder="Your Message" required className='outline-none border-[1px] p-[10px] rounded-lg mb-[10px]'></textarea>
+    <textarea placeholder="Your Message"name="message"
+          value={formData.message}
+          onChange={handleChange} required className='outline-none border-[1px] p-[10px] rounded-lg mb-[10px]'></textarea>
     
     <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Send</button>
   </form>
@@ -40,10 +64,12 @@ export const Contact = () => {
 </div>
   )
 }
-// 8. Contact Section
-// Purpose: Make it easy to get in touch.
-// Contents:
-// Contact form (Name, Email, Message).
-// Social media links (e.g., LinkedIn, GitHub, Twitter).
-// Email address and optional phone number.
-// Location (optional).
+
+
+
+
+     
+      
+       
+       
+      

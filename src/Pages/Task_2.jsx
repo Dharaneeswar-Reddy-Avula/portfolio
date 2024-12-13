@@ -23,7 +23,7 @@ export const Task_2 = () => {
     const fetchData = async () => {
         setLoading(true)
         try{
-               const response = await axios.get("https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=us&markets=h2h&oddsFormat=american&apiKey=e0f733d4f4af263b0c29ca7f9cf1034b");
+               const response = await axios.get("https://api.the-odds-api.com/v4/sports/upcoming/odds/?regions=us&markets=h2h&oddsFormat=american&apiKey=07774b34ceb3404183cfe1b160745e52");
                if(response.status===200){
                  setValues(response.data);
                  console.log(response);

@@ -36,11 +36,4 @@ export const Projects = () => {
     </div>
   )
 }
-// 3. Projects Section
-// Purpose: Highlight your work and accomplishments.
-// Contents:
-// Featured projects with:
-// Screenshots or demos.
-// Project description, technologies used, and your role.
-// Links to live projects or GitHub repositories.
-// Optionally categorize projects (e.g., Web Development, Design).
+
